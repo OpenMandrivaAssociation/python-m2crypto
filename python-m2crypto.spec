@@ -43,6 +43,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root)
-%{_libdir}/python%pyver/site-packages/M2Crypto/
+%{py_platsitedir}/M2Crypto
+%{py_platsitedir}/*.egg-info
 %doc CHANGES README INSTALL LICENCE
 
