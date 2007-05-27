@@ -1,7 +1,7 @@
 %define rname m2crypto
 %define name python-%rname
-%define version 0.13
-%define release %mkrel 4
+%define version 0.17
+%define release %mkrel 1
 
 
 Summary: 	Crypto and SSL toolkit for Python
@@ -14,8 +14,6 @@ Group: 		Development/Python
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Url: 		http://sandbox.rulemaker.net/ngps/m2/
 BuildRequires:	python-devel swig openssl-devel
-# fix the compilation with a newer python
-Patch0:     python-m2crypto.compile.patch
 
 
 %description
@@ -32,7 +30,6 @@ M2Crypto is a crypto and SSL toolkit for Python featuring the following:
 
 %prep
 %setup -q -n %{rname}-%version
-%patch -p0
 
 %build
 env CFLAGS="$RPM_OPT_FLAGS" python setup.py build
@@ -47,5 +44,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root)
 %{_libdir}/python%pyver/site-packages/M2Crypto/
-%doc BUGS CHANGES README README.Developers INSTALL LICENCE
+%doc CHANGES README INSTALL LICENCE
 
