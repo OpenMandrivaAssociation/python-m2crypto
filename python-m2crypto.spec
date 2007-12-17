@@ -11,7 +11,6 @@ Release: 	%{release}
 Source0: 	%{rname}-%{version}.tar.bz2
 License:	Historical Permission Notice and Disclaimer
 Group: 		Development/Python
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Url: 		http://sandbox.rulemaker.net/ngps/m2/
 BuildRequires:	python-devel swig openssl-devel
 
