@@ -1,7 +1,7 @@
 %define rname m2crypto
 %define name python-%rname
 %define version 0.17
-%define release %mkrel 1
+%define release %mkrel 3
 
 
 Summary: 	Crypto and SSL toolkit for Python
