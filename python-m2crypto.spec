@@ -1,20 +1,15 @@
-%define rname m2crypto
-%define name python-%rname
-%define version 0.17
-%define release %mkrel 3
-
-
 Summary: 	Crypto and SSL toolkit for Python
-Name: 		%{name}
-Version: 	%{version}
-Release: 	%{release}
-Source0: 	%{rname}-%{version}.tar.bz2
-License:	Historical Permission Notice and Disclaimer
+Name: 		python-m2crypto
+Version: 	0.20.2
+Release: 	%mkrel 1
+Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%version.tar.gz
+License:	MIT
 Group: 		Development/Python
 BuildRoot: 	%{_tmppath}/%{name}-buildroot
-Url: 		http://sandbox.rulemaker.net/ngps/m2/
-BuildRequires:	python-devel swig openssl-devel
-
+Url: 		http://chandlerproject.org/Projects/MeTooCrypto
+%py_requires -d
+BuildRequires:	swig
+BuildRequires:	openssl-devel
 
 %description
 M2Crypto is a crypto and SSL toolkit for Python featuring the following:
@@ -29,7 +24,10 @@ M2Crypto is a crypto and SSL toolkit for Python featuring the following:
     * ZSmime: An S/MIME messenger for Zope.
 
 %prep
-%setup -q -n %{rname}-%version
+%setup -q -n M2Crypto-%version
+for i in SWIG/_ec.i SWIG/_evp.i; do
+	sed -i -e "s/openssl\/opensslconf/%{multiarch_platform}\/openssl\/opensslconf/" "$i"
+done
 
 %build
 env CFLAGS="$RPM_OPT_FLAGS" python setup.py build
@@ -46,4 +44,3 @@ rm -rf $RPM_BUILD_ROOT
 %{py_platsitedir}/M2Crypto
 %{py_platsitedir}/*.egg-info
 %doc CHANGES README INSTALL LICENCE
-
