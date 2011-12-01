@@ -36,10 +36,10 @@ env CFLAGS="$RPM_OPT_FLAGS" python setup.py build
 # test requires some files ( such as a certificat, so disabled for now )
 #PYTHONPATH="./build/lib.linux-i686-2.4/M2Crypto/:." python tests/alltests.py
 %install
-python setup.py install --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+python setup.py install --root=%{buildroot} --record=INSTALLED_FILES
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
