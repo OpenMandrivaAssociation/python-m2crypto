@@ -1,8 +1,8 @@
 Summary: 	Crypto and SSL toolkit for Python
 Name: 		python-m2crypto
-Version: 	0.20.2
-Release: 	%mkrel 5
-Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%version.tar.gz
+Version: 	0.21.1
+Release: 	1
+Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 Patch0:		M2Crypto-0.20.2-openssl1.patch
 License:	MIT
 Group: 		Development/Python
@@ -92,4 +92,5 @@ rm -rf $RPM_BUILD_ROOT
 
 * Mon Apr 19 2004 Pascal Terjan <pterjan@mandrake.org> 0.13-1mdk
 - First Mandrake package
+
 
