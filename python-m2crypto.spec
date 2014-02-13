@@ -6,9 +6,8 @@ Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%version.tar
 Patch0:		M2Crypto-0.20.2-openssl1.patch
 License:	MIT
 Group: 		Development/Python
-BuildRoot: 	%{_tmppath}/%{name}-buildroot
 Url: 		http://chandlerproject.org/Projects/MeTooCrypto
-%py_requires -d
+BuildRequires:  python-devel
 BuildRequires:	swig
 BuildRequires:	openssl-devel
 
