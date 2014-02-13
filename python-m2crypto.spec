@@ -1,14 +1,14 @@
 Summary:	Crypto and SSL toolkit for Python
 Name:		python-m2crypto
 Version:	0.21.1
-Release:	5
+Release:	6
 License:	MIT
 Group:		Development/Python
 Url:		http://chandlerproject.org/Projects/MeTooCrypto
 Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 BuildRequires:	swig
 BuildRequires:	pkgconfig(openssl)
-%py_requires -d
+BuildRequires:  python-devel
 
 %description
 M2Crypto is a crypto and SSL toolkit for Python featuring the following:
