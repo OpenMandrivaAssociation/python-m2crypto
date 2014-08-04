@@ -1,6 +1,6 @@
 Summary:	Crypto and SSL toolkit for Python
 Name:		python-m2crypto
-Version:	0.21.1
+Version:	0.22.3
 Release:	8
 License:	MIT
 Group:		Development/Python
@@ -38,5 +38,5 @@ python setup.py install --root=%{buildroot} --record=INSTALLED_FILES
 %files
 %{py_platsitedir}/M2Crypto
 %{py_platsitedir}/*.egg-info
-%doc CHANGES README INSTALL LICENCE
+%doc README
 
