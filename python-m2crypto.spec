@@ -8,7 +8,8 @@ Url:		http://chandlerproject.org/Projects/MeTooCrypto
 Source0:	http://pypi.python.org/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 BuildRequires:	swig
 BuildRequires:	pkgconfig(openssl)
-BuildRequires:  python-devel
+BuildRequires:  pkgconfig(python2)
+BuildRequires:	python2-setuptools
 
 %description
 M2Crypto is a crypto and SSL toolkit for Python featuring the following:
@@ -29,14 +30,15 @@ for i in SWIG/_ec.i SWIG/_evp.i; do
 done
 
 %build
-env CFLAGS="$RPM_OPT_FLAGS" python setup.py build
+env CFLAGS="$RPM_OPT_FLAGS" python2 setup.py build
 # test requires some files ( such as a certificat, so disabled for now )
-#PYTHONPATH="./build/lib.linux-i686-2.4/M2Crypto/:." python tests/alltests.py
+#PYTHONPATH="./build/lib.linux-i686-2.4/M2Crypto/:." python2 tests/alltests.py
 %install
-python setup.py install --root=%{buildroot} --record=INSTALLED_FILES
+python2 setup.py install --root=%{buildroot} --record=INSTALLED_FILES
 
 %files
-%{py_platsitedir}/M2Crypto
-%{py_platsitedir}/*.egg-info
+%{py2_platsitedir}/M2Crypto
+%{py2_platsitedir}/*.egg-info
+
 %doc README
 
