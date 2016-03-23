@@ -1,7 +1,7 @@
 Summary:	Crypto and SSL toolkit for Python
 Name:		python-m2crypto
-Version:	0.23.0
-Release:	1.1
+Version:	0.24.0
+Release:	1
 License:	MIT
 Group:		Development/Python
 Url:		http://chandlerproject.org/Projects/MeTooCrypto
