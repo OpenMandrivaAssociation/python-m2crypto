@@ -11,7 +11,8 @@ Source0:	https://pypi.io/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 #Patch0:		m2crypto-0.26.2-gcc_macros.patch
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(python3)
-BuildRequires:	python2dist(setuptools)
+BuildRequires:	python2-setuptools
+BuildRequires:	python-setuptools
 BuildRequires:	swig
 BuildRequires:	python-typing
 BuildRequires:	python2-typing
