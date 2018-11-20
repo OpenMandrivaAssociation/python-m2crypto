@@ -10,8 +10,11 @@ Url: 		https://gitlab.com/m2crypto/m2crypto
 Source0:	https://pypi.io/packages/source/M/M2Crypto/M2Crypto-%{version}.tar.gz
 #Patch0:		m2crypto-0.26.2-gcc_macros.patch
 BuildRequires:	pkgconfig(python2)
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	python2dist(setuptools)
 BuildRequires:	swig
+BuildRequires:	python-typing
+BuildRequires:	python2-typing
 BuildRequires:	pkgconfig(openssl)
 
 %description
@@ -67,12 +70,18 @@ if pkg-config openssl ; then
 	LDFLAGS="$LDFLAGS`pkg-config --libs-only-L openssl`" ; export LDFLAGS
 fi
 %py2_build
+%py3_build
 
 %install
 %py2_install
+%py3_install
 
 
 %files -n python2-m2crypto
 %doc README.rst
 %{python2_sitearch}/M2Crypto
 %{python2_sitearch}/*.egg-info
+
+%files
+%{python_sitearch}/M2Crypto
+%{python_sitearch}/*.egg-info
