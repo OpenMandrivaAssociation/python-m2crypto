@@ -14,8 +14,6 @@ BuildRequires:	pkgconfig(python3)
 BuildRequires:	python2-setuptools
 BuildRequires:	python-setuptools
 BuildRequires:	swig
-BuildRequires:	python-typing
-BuildRequires:	python2-typing
 BuildRequires:	pkgconfig(openssl)
 
 %description
