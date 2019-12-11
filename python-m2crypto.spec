@@ -3,7 +3,7 @@
 Summary: 	Crypto and SSL toolkit for Python
 Name: 		python-m2crypto
 Version:	0.35.2
-Release:	1
+Release:	2
 License:	MIT
 Group: 		Development/Python
 Url: 		https://gitlab.com/m2crypto/m2crypto
