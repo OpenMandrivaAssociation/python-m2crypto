@@ -2,12 +2,12 @@
 
 Summary: 	Crypto and SSL toolkit for Python
 Name: 		python-m2crypto
-Version:	0.36.0
+Version:	0.37.1
 Release:	1
 License:	MIT
 Group: 		Development/Python
 Url: 		https://gitlab.com/m2crypto/m2crypto
-Source0:	https://files.pythonhosted.org/packages/ff/df/84609ed874b5e6fcd3061a517bf4b6e4d0301f553baf9fa37bef2b509797/M2Crypto-0.36.0.tar.gz
+Source0:	https://files.pythonhosted.org/packages/aa/36/9fef97358e378c1d3bd567c4e8f8ca0428a8d7e869852cef445ee6da91fd/M2Crypto-0.37.1.tar.gz
 #Patch0:		m2crypto-0.26.2-gcc_macros.patch
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(python3)
