@@ -1,13 +1,13 @@
 %define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so\\|%{python3_sitearch}/.*\\.so
 
-Summary: 	Crypto and SSL toolkit for Python
-Name: 		python-m2crypto
-Version:	0.37.1
+Summary:	Crypto and SSL toolkit for Python
+Name:		python-m2crypto
+Version:	0.38.0
 Release:	1
 License:	MIT
-Group: 		Development/Python
-Url: 		https://gitlab.com/m2crypto/m2crypto
-Source0:	https://files.pythonhosted.org/packages/aa/36/9fef97358e378c1d3bd567c4e8f8ca0428a8d7e869852cef445ee6da91fd/M2Crypto-0.37.1.tar.gz
+Group:		Development/Python
+Url:		https://gitlab.com/m2crypto/m2crypto
+Source0:	https://files.pythonhosted.org/packages/aa/36/9fef97358e378c1d3bd567c4e8f8ca0428a8d7e869852cef445ee6da91fd/M2Crypto-%{version}.tar.gz
 #Patch0:		m2crypto-0.26.2-gcc_macros.patch
 BuildRequires:	pkgconfig(python2)
 BuildRequires:	pkgconfig(python3)
@@ -28,14 +28,14 @@ M2Crypto is a crypto and SSL toolkit for Python featuring the following:
     * ZServerSSL: A HTTPS server for Zope.
     * ZSmime: An S/MIME messenger for Zope.
 
-%package -n	python2-m2crypto
+%package -n python2-m2crypto
 Summary:	Crypto and SSL toolkit for Python 2
 Group: 		Development/Python
 
 Obsoletes:	python-m2crypto < 0.23.0-2
 Provides:	python-m2crypto = %{version}-%{release}
 
-%description -n	python2-m2crypto
+%description -n python2-m2crypto
 M2Crypto is a crypto and SSL toolkit for Python 2 featuring the following:
 
     * RSA, DSA, DH, HMACs, message digests, symmetric ciphers (including AES).
@@ -48,7 +48,7 @@ M2Crypto is a crypto and SSL toolkit for Python 2 featuring the following:
     * ZSmime: An S/MIME messenger for Zope.
 
 %prep
-%setup -q -n M2Crypto-%version
+%setup -q -n M2Crypto-%{version}
 %autopatch -p1
 
 rm -rf *.egg-info
@@ -63,10 +63,10 @@ rm -rf *.egg-info
 %{__cc} -E -dM - < /dev/null | grep -v __STDC__ | grep -v __REGISTER_PREFIX__ | grep -v __GNUC__ \
 	| sed 's/^\(#define \([^ ]*\) .*\)$/#undef \2\n\1/' > SWIG/gcc_macros.h
 
-CFLAGS="$RPM_OPT_FLAGS" ; export CFLAGS
+CFLAGS="%{optflags}" ; export CFLAGS
 if pkg-config openssl ; then
-	CFLAGS="$CFLAGS `pkg-config --cflags openssl`" ; export CFLAGS
-	LDFLAGS="$LDFLAGS`pkg-config --libs-only-L openssl`" ; export LDFLAGS
+    CFLAGS="$CFLAGS $(pkg-config --cflags openssl)" ; export CFLAGS
+    LDFLAGS="$LDFLAGS$(pkg-config --libs-only-L openssl)" ; export LDFLAGS
 fi
 %py2_build
 %py3_build
