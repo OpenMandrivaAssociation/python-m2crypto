@@ -1,5 +1,3 @@
-%define _exclude_files_from_autoprov %{python2_sitearch}/.*\\.so\\|%{python3_sitearch}/.*\\.so
-
 Summary:	Crypto and SSL toolkit for Python
 Name:		python-m2crypto
 Version:	0.38.0
@@ -30,8 +28,7 @@ M2Crypto is a crypto and SSL toolkit for Python featuring the following:
 
 %package -n python2-m2crypto
 Summary:	Crypto and SSL toolkit for Python 2
-Group: 		Development/Python
-
+Group:		Development/Python
 Obsoletes:	python-m2crypto < 0.23.0-2
 Provides:	python-m2crypto = %{version}-%{release}
 
@@ -48,33 +45,24 @@ M2Crypto is a crypto and SSL toolkit for Python 2 featuring the following:
     * ZSmime: An S/MIME messenger for Zope.
 
 %prep
-%setup -q -n M2Crypto-%{version}
-%autopatch -p1
+%autosetup -n M2Crypto-%{version} -p1
 
 rm -rf *.egg-info
 
 %build
-# Collect GCC predefinitions - patch0 makes SWIG use them. Implementation below is from fedora.
-#
-# __REGISTER_PREFIX__ is defined to unquoted $ on some platforms; gcc handles
-# this fine, but swig chokes on it.
-# __GNUC__ really should be included in gcc_macros.h, but this currently breaks
-# builds on ppc64: https://bugzilla.redhat.com/show_bug.cgi?id=1317553 .
-%{__cc} -E -dM - < /dev/null | grep -v __STDC__ | grep -v __REGISTER_PREFIX__ | grep -v __GNUC__ \
-	| sed 's/^\(#define \([^ ]*\) .*\)$/#undef \2\n\1/' > SWIG/gcc_macros.h
+%set_build_flags
 
-CFLAGS="%{optflags}" ; export CFLAGS
 if pkg-config openssl ; then
     CFLAGS="$CFLAGS $(pkg-config --cflags openssl)" ; export CFLAGS
     LDFLAGS="$LDFLAGS$(pkg-config --libs-only-L openssl)" ; export LDFLAGS
 fi
+
 %py2_build
 %py3_build
 
 %install
 %py2_install
 %py3_install
-
 
 %files -n python2-m2crypto
 %doc README.rst
