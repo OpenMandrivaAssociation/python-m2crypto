@@ -1,3 +1,6 @@
+# (tpg) 2021-07-05 lot of errors ld.lld: error: undefined symbol: _Py_NoneStruct
+%define _disable_ld_no_undefined 1
+
 Summary:	Crypto and SSL toolkit for Python
 Name:		python-m2crypto
 Version:	0.38.0
